@@ -1,0 +1,141 @@
+{
+  "private": true,
+  "name": "editor",
+  "description": "this is editor application",
+  "author": {
+    "name": "Editor",
+    "email": "editor@editor.com"
+  },
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "homepage": "./",
+  "dependencies": {
+    "@craco/craco": "^6.4.2",
+    "@electron/remote": "^2.0.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^16.11.10",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/uuid": "^8.3.3",
+    "antd": "^4.17.2",
+    "axios": "^0.24.0",
+    "bootstrap": "5.1.3",
+    "classnames": "^2.3.1",
+    "craco-less": "^1.20.0",
+    "easymde": "^2.15.0",
+    "lodash": "^4.17.21",
+    "normalize.css": "^8.0.1",
+    "qiniu": "^7.4.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "6",
+    "react-scripts": "4.0.3",
+    "react-simplemde-editor": "^5.0.2",
+    "typescript": "^4.1.2",
+    "uuid": "^8.3.2",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "cross-env BROWSER=none PORT=5000 craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write \"**/*.{ts,tsx,.js,.jsx}\"",
+    "eslint": "eslint --fix \"**/*.{ts,tsx,.js,.jsx}\"",
+    "typescript": "tsc --noEmit",
+    "electron": "electron ./electron/main.js",
+    "electron:watch": "nodemon --watch ./electron/main.js --exec \"yarn electron\"",
+    "electron-dev": "concurrently \"yarn start\" \"wait-on http://localhost:5000 && yarn electron:watch\"",
+    "electron-pack": "electron-builder --dir",
+    "electron-dist": "electron-builder",
+    "preelectron-pack": "yarn build",
+    "preelectron-dist": "yarn build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.176",
+    "babel-plugin-import": "^1.13.3",
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "electron": "^16.0.6",
+    "electron-builder": "^22.14.5",
+    "eslint-plugin-prettier": "^4.0.0",
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.4.1",
+    "wait-on": "^6.0.0"
+  },
+  "build": {
+    "appId": "editor",
+    "productName": "云文档",
+    "copyright": "Copyright © 2022 editor",
+    "extends": null,
+    "extraMetadata": {
+      "main": "./electron/main.js"
+    },
+    "files": [
+      "./build/**/*",
+      "./electron/main.js",
+      "./package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "dmg": {
+      "background": "./src/assets/appdmg.png",
+      "icon": "./src/assets/icon.icns",
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 380,
+          "y": 280,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 110,
+          "y": 280,
+          "type": "file"
+        }
+      ],
+      "window": {
+        "width": 500,
+        "height": 500
+      }
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "./src/assets/icon.ico",
+      "artifactName": "${productName}-Web-Setup-${version}.${ext}",
+      "publisherName": "Eidtor"
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "perMachine": false
+    }
+  }
+}

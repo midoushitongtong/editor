@@ -1,0 +1,32 @@
+.file-search {
+  .search-container {
+    height: 2.5rem;
+    .search-tooltip-text {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .search-input {
+      flex: 1;
+    }
+    .icon-button {
+      background-color: transparent;
+      border: none;
+      color: inherit;
+      border-radius: 100%;
+      width: 2.35rem;
+      height: 2.35rem;
+      transition: background-color 0.175s linear;
+      &:hover {
+        background-color: #fff;
+      }
+      &:active {
+        background-color: #eee;
+      }
+      .icon {
+        font-size: 1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+// 清除各浏览器间的差异化样式
+@import 'normalize.css';
+// bottstrap 样式
+@import 'bootstrap/dist/css/bootstrap.min';
+// 公共样式
+@import './assets/styles/common';
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.3);
+}

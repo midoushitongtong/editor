@@ -1,0 +1,31 @@
+@import '../../assets/styles/media';
+
+.home-right {
+  @include deviceType('mobile') {
+    padding-top: 1rem;
+  }
+
+  .start-page {
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-align: center;
+    color: #666;
+    font-size: 1.5rem;
+  }
+
+  .sync-tooltip-text {
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #959694;
+    text-align: right;
+  }
+
+  // 限制 markdown 编辑器最大高度
+  .CodeMirror-wrap {
+    height: calc(100vh - 200px);
+  }
+}

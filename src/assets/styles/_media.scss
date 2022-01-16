@@ -1,0 +1,26 @@
+// 响应式 - 生成媒体查询相关样式
+@mixin deviceType($deviceType) {
+  @if $deviceType == 'mobile' {
+    // 手机端
+    @media screen and (max-width: 767px) {
+      @content;
+    }
+  } @else if $deviceType == 'tablet' {
+    // 平板端
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      @content;
+    }
+  } @else if $deviceType == 'desktop' {
+    // 桌面端
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  } @else if $deviceType == 'desktopAndTablet' {
+    // 桌面端和平板端
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  } @else {
+    @error '设备类型匹配失败: ' + $deviceType;
+  }
+}

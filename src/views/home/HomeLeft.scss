@@ -1,0 +1,35 @@
+@import '../../assets/styles/media';
+
+.home-left {
+  // 2rem 是什么? (.home 的 padding-top 加上 padding-bottom)
+  $height: calc(100vh - 2rem);
+
+  display: flex;
+  flex-direction: column;
+  height: $height;
+
+  @include deviceType('mobile') {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    height: auto;
+    max-height: $height;
+  }
+
+  .home-left-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .home-left-bottom {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+    .btn {
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+      width: 100%;
+    }
+  }
+}
