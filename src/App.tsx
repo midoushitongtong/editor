@@ -6,6 +6,7 @@ import { Routes, Route, HashRouter } from 'react-router-dom';
 import Setting from './views/setting/Setting';
 import useWebContentsListener from './hooks/useWebContentsListener';
 import Loader from './components/Loader/Loader';
+import UpdateCheck from './components/update-checke/UpdateCheck';
 
 const App = () => {
   const [loading, setLoading] = React.useState(false);
@@ -27,6 +28,8 @@ const App = () => {
 
         {/* backend handler */}
         <BackendHandler />
+        {/* update check */}
+        <UpdateCheck />
       </HashRouter>
 
       {loading && (

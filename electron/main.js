@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 // 初始化 remote api
 require('@electron/remote/main').initialize();
 const path = require('path');
+const { autoUpdater } = require('electron-updater');
 
 // 当前打开的 window 列表
 // key: window 名称
@@ -120,6 +121,9 @@ const createSettingWindow = () => {
 
 // 监听 electron 初始化完成
 app.whenReady().then(() => {
+  // 配置自动更新
+  configAutoUpdate();
+
   // 创建 window
   createMainWindow();
 
@@ -150,3 +154,13 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
+// 配置自动更新
+const configAutoUpdate = async () => {
+  autoUpdater.autoDownload = false;
+
+  if (!app.isPackaged) {
+    // 开发环境使用 dev-app-update 模拟版本更新
+    autoUpdater.updateConfigPath = path.join(__dirname, '..', 'dev-app-update.yml');
+  }
+};
